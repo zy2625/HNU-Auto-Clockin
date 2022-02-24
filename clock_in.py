@@ -50,21 +50,30 @@ def main():
     clockin_url = 'https://fangkong.hnu.edu.cn/api/v1/clockinlog/add'
     headers = login()
     lon, lat, real_address = setLocation()
-    clockin_data = {
-                    "Longitude":lon,
-                    "Latitude":lat,
+    clockin_data = {"Temperature":"null",
                     "RealProvince":args.province,
                     "RealCity":args.city,
-                    "RealCounty":args.county,
+                    "RealCounty":"岳麓区",
                     "RealAddress":real_address,
+                    "IsUnusual":"0",
+                    "UnusualInfo":"",
+                    "QRCodeColor":"绿色",
+                    "IsTouch":"0",
+                    "IsInsulated":"0",
+                    "IsSuspected":"0",
+                    "IsDiagnosis":"0",
+                    "tripinfolist":[{"aTripDate":"","FromAdr":"","ToAdr":"","Number":"","trippersoninfolist":[]}],
+                    "toucherinfolist":[],
+                    "dailyinfo":{"IsVia":"0","DateTrip":""},
                     "IsInCampus":"1",
-                    "BackState":1,
-                    "MorningTemp":"36.5",
-                    "NightTemp":"36.5",
-                    "tripinfolist":[],
-                    "QRCodeColor":"绿色"
+                    "IsViaHuBei":"0",
+                    "IsViaWuHan":"0",
+                    "InsulatedAddress":"",
+                    "TouchInfo":"",
+                    "IsNormalTemperature":"1",
+                    "Longitude":lon,
+                    "Latitude":lat
                     }
-
     clockin = requests.post(clockin_url, headers=headers, json=clockin_data)
 
     if clockin.status_code == 200:
