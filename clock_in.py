@@ -50,7 +50,8 @@ def main():
     clockin_url = 'https://fangkong.hnu.edu.cn/api/v1/clockinlog/add'
     headers = login()
     lon, lat, real_address = setLocation()
-    clockin_data = {"Temperature":"null",
+    clockin_data = {
+                    "Temperature":"null",
                     "RealProvince":args.province,
                     "RealCity":args.city,
                     "RealCounty":"岳麓区",
